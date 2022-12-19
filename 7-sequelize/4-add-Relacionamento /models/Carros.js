@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 
 const db = require("../db/conn");
-const Users = require("./Users");
+const Usuarios = require("./Usuarios");
 
 const Carros = db.define("carros", {
   marca: {
@@ -32,6 +32,6 @@ const Carros = db.define("carros", {
   },
 });
 
-Carros.belongsTo(Users);
+Carros.belongsTo(Usuarios);
 
 module.exports = Carros;

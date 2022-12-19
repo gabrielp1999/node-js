@@ -5,7 +5,7 @@ const app = express();
 const conn = require("./db/conn");
 
 const Carros = require("./models/Carros");
-const Users = require("./models/Users");
+const Usuarios = require("./models/Usuarios");
 
 app.use(
   express.urlencoded({
@@ -17,6 +17,23 @@ app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("api ok");
+});
+
+app.post("/usuarios/cadastrar", async (req, res) => {
+  console.log(req.body);
+  const nome = req.body.nome;
+  const email = req.body.email;
+  const celular = req.body.celular;
+  const senha = req.body.senha;
+
+  await Usuarios.create({
+    nome,
+    email,
+    celular,
+    senha,
+  });
+
+  res.status(200).send("Usuário Cadastrado com Sucesso");
 });
 
 app.post("/carros/cadastrar", async (req, res) => {
@@ -101,23 +118,6 @@ app.post("/carros/update", async (req, res) => {
   await Carros.update(dadosCarro, { where: { id: id } });
 
   res.status(200).send({ status: 200, mensagem: "Atualizado com sucesso" });
-});
-
-app.post("/usuarios/cadastrar", async (req, res) => {
-  console.log(req.body);
-  const nome = req.body.nome;
-  const email = req.body.email;
-  const celular = req.body.celular;
-  const senha = req.body.senha;
-
-  await Users.create({
-    nome,
-    email,
-    celular,
-    senha,
-  });
-
-  res.status(200).send("Usuário Cadastrado com Sucesso");
 });
 
 conn
