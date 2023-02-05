@@ -1,12 +1,17 @@
 const express = require("express");
 
+const conn = require("./db/conn");
+const Task = require("./models/Task");
+
+const taskRoutes = require("./routers/tasksRoutes");
+
 const app = express();
 
 app.use(express.json())
 
-const conn = require("./db/conn");
+app.use("/task",taskRoutes);
 
-const Task = require("./models/Task");
+
 
 conn
 .sync()
