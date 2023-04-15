@@ -7,7 +7,7 @@ const taskRoutes = require("./routers/tasksRoutes");
 
 const app = express();
 
-app.use(express.json())
+app.use(express.json());
 
 app.use("/task",taskRoutes);
 
