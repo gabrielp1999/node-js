@@ -9,4 +9,4 @@ app.use(express.json());
 app.use("/products",productsRoutes);
 
 
-app.listen(3001, () => console.log("servidor rodando na 3001"));
+app.listen(3333, () => console.log("servidor rodando na 3333"));

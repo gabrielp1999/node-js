@@ -3,14 +3,15 @@ const ProductModel = require("../models/Product");
 
 class ProductController {
 
-    static showProducts(req,res){
-        res.send({ message: "produto", status: 200});
+    static async showProducts(req,res){
+        const products = await ProductModel.getAll();
+        res.send({ produtos: products, status: 200});
     }
 
     static createProduct(req,res){
         try {
-            const { name, description, price } = req.body;
-            const model = new ProductModel(name, description, price);
+            const { name, description, price, image } = req.body;
+            const model = new ProductModel(name, description, price, image);
             model.save();
             console.log(model)
 
