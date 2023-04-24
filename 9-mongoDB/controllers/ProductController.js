@@ -30,6 +30,21 @@ class ProductController {
 
         return res.send(product);
     }
+
+
+    static deleteProduct(req,res){
+        const id = req.params.id;
+        console.log("id", id)
+        ProductModel.deleteProductById(id);
+
+        return res.send({ message: "Excluido com sucesso", status: 200});
+    }
+
+
+    // static editProduct(req,res){
+
+    // }
+
 }
 
 module.exports = ProductController;
