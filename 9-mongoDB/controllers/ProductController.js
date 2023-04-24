@@ -22,6 +22,14 @@ class ProductController {
         }
 
     }
+
+    static async getProduct(req,res){
+        const id = req.params.id;
+        console.log("id", id)
+        const product = await ProductModel.getProductById(id);
+
+        return res.send(product);
+    }
 }
 
 module.exports = ProductController;

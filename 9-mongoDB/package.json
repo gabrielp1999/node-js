@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "nodemon ./index.js localhost 3333",
+    "dev": "nodemon ./index.js localhost 3001",
     "start": "./index.js"
   },
   "dependencies": {
