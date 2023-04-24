@@ -41,9 +41,23 @@ class ProductController {
     }
 
 
-    // static editProduct(req,res){
+    static async editProduct(req,res){
+        const {  
+            id,
+            name,
+            description,
+            price,
+            image
+        } = req.body;
 
-    // }
+        const product = new ProductModel(name,description,price,image);
+
+
+        await product.updateProduct(id);
+
+
+        return res.send({message:"Editado com succeso", status: 200});
+    }
 
 }
 
