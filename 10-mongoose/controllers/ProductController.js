@@ -35,29 +35,29 @@ class ProductController {
     }
 
 
-    static deleteProduct(req,res){
+    static async deleteProduct(req,res){
         const id = req.params.id;
         console.log("id deletado", id)
-        ProductModel.deleteOne({_id: id})
+        await ProductModel.deleteOne({_id: id})
 
         return res.send({ message: "Excluido com sucesso", status: 200});
     }
 
 
-    // static async editProduct(req,res){
-    //     const {  
-    //         id,
-    //         name,
-    //         description,
-    //         price,
-    //         image
-    //     } = req.body;
+    static async editProduct(req,res){
+        const {  
+            id,
+            name,
+            description,
+            price,
+            image
+        } = req.body;
 
-    //     const product = new ProductModel(name,description,price,image);
+        const product = {name,description,price,image};
         
-    //     await product.updateProduct(id);
-    //     return res.send({message:"Editado com succeso", status: 200});
-    // }
+        await ProductModel.updateOne({_id: id}, product)
+        return res.send({message:"Editado com succeso", status: 200});
+    }
 
 }
 
